@@ -1,7 +1,7 @@
 import './App.css';
 import {BrowserRouter, Route, Routes, useNavigate} from "react-router-dom"
-import {useDispatch} from "react-redux";
-import {SamplesList, setSamples, setSelectedSampleId} from "./store/samplesSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {sampleSelector, SamplesList, setSamples, setSelectedSampleId} from "./store/samplesSlice";
 import store from "./store";
 
 const App = () => {
@@ -19,15 +19,17 @@ const App = () => {
 const Home = () => {
     let dispatch = useDispatch();
     dispatch(setSamples([{
-        id: 1,
-        content: 'https://img0.baidu.com/it/u=2028084904,3939052004&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500'
+        id: 3,
+        content: 'https://img2.baidu.com/it/u=2904600073,3540507419&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500'
     }, {
-        id: 2,
-        content: 'https://img1.baidu.com/it/u=3031984612,4033725431&fm=253&fmt=auto&app=138&f=JPEG?w=815&h=500'
+        id: 4,
+        content: 'https://inews.gtimg.com/newsapp_bt/0/14673243385/1000'
     }]))
-    let message: SamplesList = store.getState().samples;
-    let content = message.sampleList[0].content;
-    // let useSelector1 : SamplesList = useSelector(sampleSelector);
+    let sam: SamplesList = store.getState().samples;
+    let content = sam.sampleList[0].content;
+    let {selectedSampleId, sampleList}: SamplesList = useSelector(sampleSelector).samples;
+    console.log(selectedSampleId, sampleList[0].content)
+
     let navigate = useNavigate();
     const useDispatch1 = useDispatch();
     useDispatch1(setSelectedSampleId(2))
