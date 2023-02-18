@@ -1,6 +1,6 @@
 // counterSlice.ts 文件
 
-import {createSelector, createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {createEntityAdapter, createSelector, createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 
 export type SampleState = {
@@ -33,6 +33,9 @@ const sampleSlice = createSlice({
     },
 });
 
+let samplesListEntityAdapter = createEntityAdapter<SamplesList>({
+    selectId: (sample) => sample.selectedSampleId
+});
 export const sampleSelector = createSelector((state: any) => state, (state) => state);
 
 export const {setSelectedSampleId, setSamples} = sampleSlice.actions;
