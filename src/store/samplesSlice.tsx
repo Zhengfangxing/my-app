@@ -5,7 +5,9 @@ import {createEntityAdapter, createSelector, createSlice, PayloadAction} from '@
 
 export type SampleState = {
     id: number;
-    content: string
+    content: string;
+    classify?: string[];
+    tags?: string[];
 }
 
 export interface SamplesList {
@@ -16,10 +18,10 @@ export interface SamplesList {
 const initialState: SamplesList = {
     sampleList: [{
         id: 1,
-        content: 'https://img0.baidu.com/it/u=2028084904,3939052004&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500'
+        content: 'https://img0.baidu.com/it/u=2028084904,3939052004&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500',
     }, {
         id: 2,
-        content: 'https://img1.baidu.com/it/u=3031984612,4033725431&fm=253&fmt=auto&app=138&f=JPEG?w=815&h=500'
+        content: 'https://img1.baidu.com/it/u=3031984612,4033725431&fm=253&fmt=auto&app=138&f=JPEG?w=815&h=500',
     }],
     selectedSampleId: 0,
 };
